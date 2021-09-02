@@ -10,13 +10,23 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 //Specify that connections from localhost:4200 (the client app) are allowed
-app.use(cors('http://localhost:4200'));
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', indexRouter);
+
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/client'));
+
+app.get('/*', function(req,res) {
+    
+res.sendFile( path.resolve( 
+  path.join(__dirname+'/dist')
+) );
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

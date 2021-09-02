@@ -7,13 +7,13 @@ var fs = require('fs');
 var loadedFiles = false;
 
 //Make sure to set the redirect URI in the Spotify app you create!
-var redirect_uri = 'http://localhost:8888/callback';
+var redirect_uri = 'https://spotify-backend-nettsu.herokuapp.com/callback';
 var my_client_id = null;
 var my_client_secret = null;
 
 var access_token = null;
 var refresh_token = null;
-var client_uri = 'http://localhost:4200';
+var client_uri = 'https://spotify-backend-nettsu.herokuapp.com/';
 
 function refresh() {
 	const params = new URLSearchParams();
