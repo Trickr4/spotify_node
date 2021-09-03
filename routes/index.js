@@ -78,7 +78,7 @@ function makeAPIRequest(url, res) {
 
 router.get('*', function(req, res, next) {
       //router.use(express.static(path.join(process.env.PWD + '/dist/client')));
-      //res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));
+      res.sendFile( path.join(__dirname+'/dist/client/index.html'));
       next();
 });
 
