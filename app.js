@@ -43,7 +43,7 @@ app.use(express.static(__dirname + '/dist/client''));
 
 app.get('/*', function(req,res) {
     
-res.sendFile( path.resolve( path.join(__dirname+'dist/')
+res.sendFile( path.resolve( path.join(__dirname+'/dist/')
 ) );
 });
 
