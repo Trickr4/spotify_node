@@ -48,12 +48,7 @@ app.use('/', indexRouter);
 
 
 
-app.get('*', function(req,res) {
-    console.log("here");
-res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
- );
-});
-app.use(express.static(__dirname + '/client'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

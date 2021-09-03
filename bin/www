@@ -6,6 +6,7 @@
 var express = require('express');
 var app = require('../app');
 var http = require('http');
+var path = require('path');
 
 /**
  * Get port from environment and store in Express.
@@ -27,6 +28,11 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+app.get('*', function(req,res) {
+    console.log("here");
+res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
+ );
+});
 
 /**
  * Normalize a port into a number, string, or false.
