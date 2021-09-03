@@ -15,10 +15,7 @@ var my_client_secret = null;
 var access_token = null;
 var refresh_token = null;
 var client_uri = 'https://spotify-backend-nettsu.herokuapp.com/';
-
-router.use("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "../client/src/index.html"))
-);
+router.use(express.static(__dirname + '/dist/client'));
 
 function refresh() {
 	const params = new URLSearchParams();
