@@ -8,8 +8,8 @@ var loadedFiles = false;
 
 //Make sure to set the redirect URI in the Spotify app you create!
 var redirect_uri = 'https://spotify-backend-nettsu.herokuapp.com/callback';
-var my_client_id = null;
-var my_client_secret = null;
+var my_client_id = "e4a860b6a91e40fe8d0a8ba87f597e80";
+var my_client_secret = "676d5aaf86f241a683727bd98a355bcb";
 
 var access_token = null;
 var refresh_token = null;
