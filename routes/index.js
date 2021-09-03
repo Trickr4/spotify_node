@@ -70,7 +70,6 @@ function makeAPIRequest(url, res) {
 			return null;
 		}
 	}).then(json => {
-		res.json(json);
 	}).catch(err => {
 		console.error(err);
 	});
@@ -184,7 +183,7 @@ router.get('/album-tracks/:id', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/albums/' + id + '/tracks', res);
 });
 
-router.get('api/track/:id', function(req, res, next) {
+router.get('/track/:id', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/tracks/' + id, res);
 });
