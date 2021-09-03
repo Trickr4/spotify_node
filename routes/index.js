@@ -70,6 +70,7 @@ function makeAPIRequest(url, res) {
 			return null;
 		}
 	}).then(json => {
+		res.json(json);
 	}).catch(err => {
 		console.error(err);
 	});
