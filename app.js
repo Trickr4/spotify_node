@@ -47,12 +47,7 @@ app.use('/', indexRouter);
 
 
 
-app.get('*', function(req,res) {
-    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
- );
-});
-
-app.get('/track', function(req,res) {
+app.get('', function(req,res) {
     res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
  );
 });
