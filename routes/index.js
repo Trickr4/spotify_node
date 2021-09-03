@@ -72,7 +72,6 @@ function makeAPIRequest(url, res) {
 		}
 	}).then(json => {
 		res.json(json);
-        res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));
 	}).catch(err => {
 		console.error(err);
 	});
@@ -195,6 +194,8 @@ router.get('/track/:id', function(req, res, next) {
 router.get('/track-audio-features/:id', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/audio-features/' + id, res);
+    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));
 });
+
 
 module.exports = router;
