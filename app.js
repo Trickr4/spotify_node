@@ -41,14 +41,14 @@ app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(__dirname + '/dist'));
+  app.use(express.static(__dirname + '/dist/client'));
 }
 
 
 
 app.get('*', function(req,res) {
     
-res.sendFile( path.join(__dirname+'./dist/client/index.html')
+res.sendFile( path.join(__dirname+'./dist/client')
  );
 });
 app.use(express.static(__dirname + '/client'));
