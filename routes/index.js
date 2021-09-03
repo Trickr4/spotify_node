@@ -25,7 +25,8 @@ function refresh() {
 		'Authorization': 'Basic ' + Buffer.from(my_client_id + ':' + my_client_secret).toString('base64')
 	};
 
-	return fetch('https://accounts.spotify.com/api/token', {method: 'POST', body: params, headers: headers}).then(response => {
+	return fetch('https://accounts.spotify.com/api/token', {method: 'POST', body: params, headers: headers,credentials: 'include',
+        withCredentials: true}).then(response => {
 		if(response.ok) {
 			return response.json();
 		} else {
@@ -46,7 +47,8 @@ function makeAPIRequest(url, res) {
 		'Authorization': 'Bearer ' + access_token
 	};
 
-	fetch(url, {method: 'GET', headers: headers}).then(response => {
+	fetch(url, {method: 'GET', headers: headers,credentials: 'include',
+        withCredentials: true}).then(response => {
 		if(response.ok) {
 			return response.json();
 		} else {
