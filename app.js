@@ -1,7 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var sess = require('express-session');
+var session = require('express-session');
+const cookieParser = require("cookie-parser");
 var logger = require('morgan');
 var cors = require('cors');
 
@@ -9,23 +10,41 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
+var corsOptions = {
+  origin: 'https://spotify-backend-nettsu.herokuapp.com/',
+  credentials: true
+}
+
 //Specify that connections from localhost:4200 (the client app) are allowed
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.set('trust proxy', 1);
-app.use(session(sess));
+app.use(session({
+  secret: "jqSpotifySessionSecretToken",
+  saveUninitialized: false,
+  resave: false,
+  proxy: true,
+  cookie: {
+    sameSite: true,
+    secure: true,
+    maxAge: 3600000,
+    path: '/'}
+                }));
+
+app.use(express.urlencoded({ extended: true }));
+
+//app.use(cookieParser());
 
 app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/client'));
+app.use(express.static(__dirname + 'client/dist'));
 
 app.get('/*', function(req,res) {
     
 res.sendFile( path.resolve( 
-  path.join(__dirname+'/dist')
+  path.join(__dirname+'client/dist/index.html')
 ) );
 });
 
