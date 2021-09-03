@@ -16,6 +16,8 @@ var access_token = null;
 var refresh_token = null;
 var client_uri = 'https://spotify-backend-nettsu.herokuapp.com/';
 
+app.use(express.static(path.join(process.env.PWD + '/dist/client')));
+
 function refresh() {
 	const params = new URLSearchParams();
 	params.append('refresh_token', refresh_token);
@@ -196,5 +198,4 @@ router.get('/track-audio-features/:id', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/audio-features/' + id, res);
 });
 
-router.use(express.static(path.join(process.env.PWD + '/dist/client')));
 module.exports = router;
