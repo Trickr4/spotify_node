@@ -143,9 +143,9 @@ export class SpotifyService {
     });
   }
 
-  getTracksForAlbum(albumId:string):Promise<TrackData[]> {
+  async getTracksForAlbum(albumId:string):Promise<TrackData[]> {
     //TODO: use the tracks for album endpoint to make a request to express.
-    return this.sendRequestToExpress('/album-tracks/'+albumId).then((data) => {
+    return await this.sendRequestToExpress('/album-tracks/'+albumId).then((data) => {
       let resources = new Array();
       data['items'].forEach((item) => {
       let Track = new TrackData(item);
@@ -157,17 +157,17 @@ export class SpotifyService {
     });
   }
 
-  getTrack(trackId:string):Promise<TrackData> {
+  async getTrack(trackId:string):Promise<TrackData> {
     //TODO: use the track endpoint to make a request to express.
-    return this.sendRequestToExpress('/track/'+trackId).then((data) => {
+    return await this.sendRequestToExpress('/track/'+trackId).then((data) => {
       let Track = new TrackData(data);
       return Track;
     });
   }
 
-  getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
+  async getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     //TODO: use the audio features for track endpoint to make a request to express.
-    return this.sendRequestToExpress('/track-audio-features/'+trackId).then((data) => {
+    return await this.sendRequestToExpress('/track-audio-features/'+trackId).then((data) => {
       let resources = new Array();
       let danceability = new TrackFeature('danceability',data.danceability);
       danceability.id = data.id;
