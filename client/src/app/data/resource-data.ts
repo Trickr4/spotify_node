@@ -17,7 +17,7 @@ export abstract class ResourceData {
 		}
 
 		if('spotify' in objectModel['external_urls']) {
-			this.url = objectModel['external_urls']['spotify'];
+			this.url = "/api/"+objectModel['external_urls']['spotify'];
 		}
 	}
 }
