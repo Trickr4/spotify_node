@@ -16,6 +16,8 @@ var corsOptions = {
   credentials: true
 }
 
+process.env.PWD = process.cwd()
+
 //Specify that connections from localhost:4200 (the client app) are allowed
 app.use(cors(corsOptions));
 app.use(logger('dev'));
@@ -41,7 +43,7 @@ app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
 //if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname+'/dist/client')));
+  app.use(express.static(path.join(process.env.PWD, 'dist', 'client')));
 //}
 
 
