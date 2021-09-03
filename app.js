@@ -47,7 +47,7 @@ app.use('/', indexRouter);
 
 
 
-app.get('/*', function(req,res) {
+app.get('./*', function(req,res) {
     app.use(express.static(path.join(process.env.PWD + '/dist/client')));
     res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
  );
