@@ -21,7 +21,7 @@ process.env.PWD = process.cwd()
 //Specify that connections from localhost:4200 (the client app) are allowed
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: "jqSpotifySessionSecretToken",
   saveUninitialized: false,

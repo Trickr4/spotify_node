@@ -3,7 +3,6 @@ var router = express.Router();
 //Fetch doesn't exist on server-side JavaScript, so we impoort a package which implements the functionality.
 var fetch = require('node-fetch');
 var fs = require('fs');
-var path = require('path');
 
 var loadedFiles = false;
 
@@ -15,8 +14,6 @@ var my_client_secret = "676d5aaf86f241a683727bd98a355bcb";
 var access_token = null;
 var refresh_token = null;
 var client_uri = 'https://spotify-backend-nettsu.herokuapp.com/';
-
-app.use(express.static(path.join(process.env.PWD + '/dist/client')));
 
 function refresh() {
 	const params = new URLSearchParams();
