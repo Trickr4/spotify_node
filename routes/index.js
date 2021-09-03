@@ -194,8 +194,7 @@ router.get('/track/:id', function(req, res, next) {
 router.get('/track-audio-features/:id', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/audio-features/' + id, res);
-    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));
 });
 
-
+router.use(express.static(path.join(process.env.PWD + '/dist/client')));
 module.exports = router;
