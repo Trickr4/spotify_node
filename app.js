@@ -43,9 +43,9 @@ app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(process.env.PWD + '/dist/client')));
+    app.use('/',express.static(path.join(process.env.PWD + '/dist/client')));
 
-    app.get('/', function(req,res) {
+    app.get('/*', function(req,res) {
     res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));});
 
 }
