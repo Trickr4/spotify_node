@@ -75,7 +75,7 @@ function makeAPIRequest(url, res) {
 		console.error(err);
 	});
 }
-
+/*
 router.get('*', function(req, res, next) {
 	if(!loadedFiles) {
 		//This chains two promises together. First, client_secret.json will be read and parsed. Once it completes, tokens.json will be read and parsed.
@@ -96,7 +96,7 @@ router.get('*', function(req, res, next) {
 		next();
 	}
 });
-
+*/
 router.get('/login', function(req, res, next) {
 	var scopes = 'user-read-private user-read-email';
 	res.redirect('https://accounts.spotify.com/authorize' +
