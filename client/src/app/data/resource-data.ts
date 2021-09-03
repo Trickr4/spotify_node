@@ -9,9 +9,9 @@ export abstract class ResourceData {
 		this.name = objectModel['name'];
 		this.id = objectModel['id'];
 		if(objectModel['images'] && objectModel['images'].length > 0) {
-			this.imageURL = '/api/' + objectModel['images'][0].url;
+			this.imageURL = objectModel['images'][0].url;
 		} else if(objectModel['album'] && objectModel['album']['images'] && objectModel['album']['images'].length > 0) {
-			this.imageURL = '/api/' +objectModel['album']['images'][0].url;
+			this.imageURL = objectModel['album']['images'][0].url;
 		} else {
 			this.imageURL = '../../assets/unknown.jpg';
 		}
