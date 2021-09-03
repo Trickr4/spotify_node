@@ -7,7 +7,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
 	{ path: 'artist/', component: ArtistPageComponent},
-	{ path: 'track/', component: TrackPageComponent},
+	{ path: 'app/track/:id', component: TrackPageComponent},
 	{ path: 'album/', component: AlbumPageComponent},
 	{ path: '', component: HomePageComponent}
 ];
