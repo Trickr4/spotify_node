@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var path = require('path');
 //Fetch doesn't exist on server-side JavaScript, so we impoort a package which implements the functionality.
 var fetch = require('node-fetch');
 var fs = require('fs');
+var path = require('path');
 
 var loadedFiles = false;
 
@@ -187,13 +187,13 @@ router.get('/album-tracks/:id', function(req, res, next) {
 
 router.get('/track/:id', function(req, res, next) {
 	var id = req.params.id;
-    app.get('/', function(req,res) {
-    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
+  
 	makeAPIRequest('https://api.spotify.com/v1/tracks/' + id, res);
 });
 
 router.get('/track-audio-features/:id', function(req, res, next) {
 	var id = req.params.id;
+    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
 	makeAPIRequest('https://api.spotify.com/v1/audio-features/' + id, res);
 });
 
