@@ -39,11 +39,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/client''));
+app.use(express.static(__dirname + 'client/dist/client''));
 
 app.get('*', function(req,res) {
     
-res.sendFile( path.resolve( __dirname,'dist','client', 'index.html') );
+res.sendFile( path.resolve( 
+  path.join(__dirname+'client/dist')
+) );
 });
 
 // catch 404 and forward to error handler
