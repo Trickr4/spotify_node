@@ -45,7 +45,6 @@ app.use('/', indexRouter);
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(process.env.PWD + '/dist/client')));
 
-
     app.get('/', function(req,res) {
     res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
  );
