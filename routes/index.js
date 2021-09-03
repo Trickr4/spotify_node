@@ -3,7 +3,7 @@ var router = express.Router();
 //Fetch doesn't exist on server-side JavaScript, so we impoort a package which implements the functionality.
 var fetch = require('node-fetch');
 var fs = require('fs');
-
+var path = require('path');
 var loadedFiles = false;
 
 //Make sure to set the redirect URI in the Spotify app you create!
@@ -75,28 +75,12 @@ function makeAPIRequest(url, res) {
 		console.error(err);
 	});
 }
-/*
+
 router.get('*', function(req, res, next) {
-	if(!loadedFiles) {
-		//This chains two promises together. First, client_secret.json will be read and parsed. Once it completes, tokens.json will be read and parsed.
-		//Promise.all() could be used to conduct these two file reads asynchronously, which is more efficient.
-		fs.readFile('client_secret.json', (err, data) => {
-			data = JSON.parse(data);
-			my_client_id = data.client_id;
-			my_client_secret = data.client_secret;
-			fs.readFile('tokens.json', (err, data) => {
-			data = JSON.parse(data);
-			access_token = data.access_token;
-			refresh_token = data.refresh_token;
-			next();
-			});
-		});
-	}
-	else {
+        res.sendFile( path.join(process.env.PWD+'/dist/client/index.html'));
 		next();
-	}
 });
-*/
+
 router.get('/login', function(req, res, next) {
 	var scopes = 'user-read-private user-read-email';
 	res.redirect('https://accounts.spotify.com/authorize' +
