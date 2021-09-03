@@ -50,7 +50,7 @@ app.use('/', indexRouter);
 
 app.get('*', function(req,res) {
     console.log("here");
-res.sendFile( path.join(__dirname+'/dist/client/index.html')
+res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
  );
 });
 app.use(express.static(__dirname + '/client'));
