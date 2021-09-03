@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use(cookieParser());
 
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 
 // Serve only the static files form the dist directory
 //if (process.env.NODE_ENV === "production") {
@@ -47,7 +47,7 @@ app.use('/', indexRouter);
 
 
 
-app.get('', function(req,res) {
+app.get('/', function(req,res) {
     res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
  );
 });
