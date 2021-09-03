@@ -159,7 +159,7 @@ export class SpotifyService {
 
   async getTrack(trackId:string):Promise<TrackData> {
     //TODO: use the track endpoint to make a request to express.
-    return await this.sendRequestToExpress('/track/'+trackId).then((data) => {
+    return await this.sendRequestToExpress('/track/').then((data) => {
       let Track = new TrackData(data);
       return Track;
     });
