@@ -40,14 +40,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('./dist/client'));
-}
+//if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname+'/dist/client')));
+//}
 
 
 
 app.get('*', function(req,res) {
-    
+    console.log("here");
 res.sendFile( path.join(__dirname+'/dist/client/index.html')
  );
 });
