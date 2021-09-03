@@ -196,4 +196,3 @@ router.get('/track-audio-features/:id', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/audio-features/' + id, res);
 });
 
-module.exports = router;
