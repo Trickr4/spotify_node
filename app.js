@@ -45,10 +45,11 @@ app.set('views', path.join(__dirname + '/dist/client'));
 
 // Serve only the static files form the dist directory
 if (process.env.NODE_ENV === "production") {
-    app.use('/',express.static(path.join(__dirname + '/dist/client')));
+    app.use('/dist/client',express.static(path.join(__dirname + '/dist/client')));
 
     app.get('/*', function(req,res) {
     res.sendFile( path.join(__dirname+'/dist/client/index.html'));});
+  res.render(path.join(__dirname+'/dist/client/index.html')));
 
 }
 
