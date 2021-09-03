@@ -6,9 +6,9 @@ import { AlbumPageComponent } from './pages/album-page/album-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
-	{ path: 'artist/', component: ArtistPageComponent},
-	{ path: 'track/', component: TrackPageComponent},
-	{ path: 'album/', component: AlbumPageComponent},
+	{ path: 'artist/:id', component: ArtistPageComponent},
+	{ path: 'track/:id', component: TrackPageComponent},
+	{ path: 'album/:id', component: AlbumPageComponent},
 	{ path: '', component: HomePageComponent}
 ];
 
