@@ -52,6 +52,11 @@ app.get('*', function(req,res) {
  );
 });
 
+app.get('/track/*', function(req,res) {
+    res.sendFile( path.join(process.env.PWD+'/dist/client/index.html')
+ );
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
