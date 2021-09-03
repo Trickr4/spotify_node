@@ -39,12 +39,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + 'angbuild/dist'));
+app.use(express.static(__dirname + '/dist/client'));
 
 app.get('/*', function(req,res) {
     
 res.sendFile( path.resolve( 
-  path.join(__dirname+'angbuild')
+  path.join(__dirname+'/dist')
 ) );
 });
 
