@@ -184,7 +184,7 @@ router.get('/album-tracks/:id', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/albums/' + id + '/tracks', res);
 });
 
-router.get('/track/:id', function(req, res, next) {
+router.get('/track/', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/tracks/' + id, res);
 });
