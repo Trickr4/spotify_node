@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 var logger = require('morgan');
 var cors = require('cors');
 
-
 var indexRouter = require('./routes/index');
 
 var app = express();
@@ -16,12 +15,11 @@ var corsOptions = {
   credentials: true
 }
 
-process.env.PWD = process.cwd()
-
 //Specify that connections from localhost:4200 (the client app) are allowed
 app.use(cors(corsOptions));
+app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(session({
   secret: "jqSpotifySessionSecretToken",
   saveUninitialized: false,
@@ -36,24 +34,33 @@ app.use(session({
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cookieParser());
-
+//app.use(cookieParser());
 
 app.use('/', indexRouter);
 
-app.set('views', path.join(__dirname + '/dist/client'));
-
 // Serve only the static files form the dist directory
-if (process.env.NODE_ENV === "production") {
-    app.use('/dist/client',express.static(path.join(__dirname + '/dist/client')));
+app.use(express.static(__dirname + '/dist/client'));
 
-    app.get('/*', function(req,res) {
-    res.sendFile( path.join(__dirname+'/dist/client/index.html'));
-    res.render('../dist/client/index.html');
-    });
-    
+app.get('/*', function(req,res) {
+    console.log(req)
+res.sendFile( path.resolve( 
+  path.join(__dirname+'/dist/client')
+) );
+});
 
-}
+app.get('/artist', function(req,res) {
+    console.log(req)
+res.sendFile( path.resolve( 
+  path.join(__dirname+'/dist/client')
+) );
+});
+
+app.get('/track', function(req,res) {
+    console.log(req)
+res.sendFile( path.resolve( 
+  path.join(__dirname+'/dist/client')
+) );
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
